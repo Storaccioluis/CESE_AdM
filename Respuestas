@@ -1,0 +1,16 @@
+
+
+							Arquitectura de microcontroladores
+
+1. Los microcontroladores de ARM se dividen en 3 familias :
+Cortex A: optimizado para aplicaciones donde la característica principal es la capacidad de multitareas, con un caché optimizado para las aplicaciones. La desventaja de esta optimización lo hace un sistema poco determinista.
+Cortex R: Procesadores diseñados para APIs de real time. Donde se hace foco en el tiempo de latencia para poder desarrollar aplicaciones deterministas.
+Cortex M: microcontroladores orientados a sistemas embebidos, los cuales poseen perdiféricos y memoria integrada. 
+
+	Cortex M
+
+1.Diferencias entre las familias de procesadores M0, M3 y M4:
+   * M0: Arquitectura del bus de datos del tipo Von Neumann (1 solo bus), comparte el mismo bus el programa de instrucciones y el acceso a memoria. Posee un set de intrucciones resumido. 
+   * M3: Arquitectura del bus del tipo Harvard (2 buses), instrucciones de multiplicación con resultados de 64bits e instrucciones de divisiones con cociente de 32bits. Posee Systick, timer recurrente para implementaciones de RTOS.  
+   * M4: Arquitectura del bus del tipo Harvard (2 buses), instrucciones de multiplicación con resultados de 64bits e instrucciones de divisiones con cociente de 32bits. Posee instrucciones para DSP, timer recurrente systick para implementaciones de RTOS.
+   
