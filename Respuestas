@@ -13,4 +13,27 @@ Cortex M: microcontroladores orientados a sistemas embebidos, los cuales poseen 
    * M0: Arquitectura del bus de datos del tipo Von Neumann (1 solo bus), comparte el mismo bus el programa de instrucciones y el acceso a memoria. Posee un set de intrucciones resumido. 
    * M3: Arquitectura del bus del tipo Harvard (2 buses), instrucciones de multiplicación con resultados de 64bits e instrucciones de divisiones con cociente de 32bits. Posee Systick, timer recurrente para implementaciones de RTOS.  
    * M4: Arquitectura del bus del tipo Harvard (2 buses), instrucciones de multiplicación con resultados de 64bits e instrucciones de divisiones con cociente de 32bits. Posee instrucciones para DSP, timer recurrente systick para implementaciones de RTOS.
-   
+
+2.Set de instrucciones Thumb:
+  Trumb es un subconjunto de instrucciones que se usan con mayor frecuencia. Al ser las instrucciones de 16 bits, la mitad de longitud, se disminuye la cantidad de código por lo tanto su densidad. 
+
+3.Arquitectura Load-Store
+   Si un dato de la memoria debe ser procesado, el mismo es cargado desde la memoria hacia un registro y luego procesado. En caso de ser necesario, el dato puede ser escrito desde el registro hacia la memoria. No se trabajan con datos desde la memoria. ******
+
+4.Mapa de memoria arquitectura ARM
+  El mapa de memoria de la familia comprende 4GB de direcciones donde allí se encuentran mapeados los registros, código de programa, periféricos, memoria SRAM entre otros.
+
+5.Ventajas del shadowed pointers del PSP y el MSP
+  Los procesadores MCortex son diseñados para soportar compatibilidad con los sistemas operativos, el shadowed stack pointer es incorporado para hacer más eficiente el uso de estos sistemas. Consta de dos stacks, MSP (Main Stack Pointer) que es usado por el kernel del SO y el interrupt handler. Y el PSP (Processor Stack Pointer) es usado por las aplicaciones de las tareas.
+ El MSP es por defecto el stack pointer y es usado en modo Thread cuando el bit SPSEL es 0, además es usado siempre en el modo handler. Por otra parte el PSP es usado en modo thread cuando el SPSEL es seteado en 1.
+
+6.Modos de privilegio y operación del cortex M, sus relaciones y como se conmuta de un modo al otro
+ CortexM posee dos modos de operación, privilegiado y no provilegiado. El privilegiado permite al usuario realizar modificaciones en registros o acceder a la memoria sin restricciones, lo cual puede ser riesgoso para aplicaciones críticas. En modo no privilegiado este acceso se encuentra restringido. 
+Por defecto el micro controlador en al iniciar, arranca en modo privilegiado. Con la función "__get_CONTROL(x)" podemos saber si estamos en modo privilegiado o no, siendo x=0 para privilegiado y 1 para el no privilegiado. 
+Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado haciendo x=1. Una vez en este modo, no podemos cambiar a modo privilegiado con la misma función, se debe accedeer a una interrupción en modo handler para volverlo a privilegiado. 
+
+
+
+
+
+
