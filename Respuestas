@@ -32,6 +32,20 @@ Cortex M: microcontroladores orientados a sistemas embebidos, los cuales poseen 
 Por defecto el micro controlador en al iniciar, arranca en modo privilegiado. Con la función "__get_CONTROL(x)" podemos saber si estamos en modo privilegiado o no, siendo x=0 para privilegiado y 1 para el no privilegiado. 
 Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado haciendo x=1. Una vez en este modo, no podemos cambiar a modo privilegiado con la misma función, se debe accedeer a una interrupción en modo handler para volverlo a privilegiado. 
 
+7.Registros ortogonales
+ Un set de instrucciones son ortogonales si las mismas pueden tomar cualquier registro del microcontrolador. Por ejemplo, ADD Rd, Rn, Rm.
+
+8.#####################################################
+
+9.Excepciones más prioritarias
+  Estas excepciones tienen prioridades fijas, siendo la mas prioritaria la de menor valor. Por ejemplo reset =-3, NMI=-2 y Hardfault=-1.
+  Las demás poseen prioridades programables por el fabricante o por el programador. 
+  Reset: es una excepción invocada en un arranque o en un reinicio en caliente. Cuando es invocada, las operaciones del procesador son detenidas en cualquier punto de la instrucción. Al reesteablecerse el reset, la ejecución se inicia desde la dirección proporcionada por reset entry. 
+  
+  NMI (Non-Maskable Interrupt): es una interrupción que puede provenir de periféricos o del software.
+  
+  Hardfault: es una interrupción que proviene del hardware, la misma tiene mayor prioridad que cualquier excepción con prioridad configurable. 
+
 
 
 
