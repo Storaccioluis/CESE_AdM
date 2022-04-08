@@ -5,47 +5,47 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   000001ac  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         0000179c  080001ac  080001ac  000101ac  2**2
+  1 .text         000017e0  080001ac  080001ac  000101ac  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       00000018  08001948  08001948  00011948  2**2
+  2 .rodata       00000018  0800198c  0800198c  0001198c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  08001960  08001960  0002001c  2**0
+  3 .ARM.extab    00000000  080019a4  080019a4  0002001c  2**0
                   CONTENTS
-  4 .ARM          00000008  08001960  08001960  00011960  2**2
+  4 .ARM          00000008  080019a4  080019a4  000119a4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08001968  08001968  0002001c  2**0
+  5 .preinit_array 00000000  080019ac  080019ac  0002001c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08001968  08001968  00011968  2**2
+  6 .init_array   00000004  080019ac  080019ac  000119ac  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  0800196c  0800196c  0001196c  2**2
+  7 .fini_array   00000004  080019b0  080019b0  000119b0  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000001c  20000000  08001970  00020000  2**2
+  8 .data         0000001c  20000000  080019b4  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   9 .ccmram       00000000  10000000  10000000  0002001c  2**0
                   CONTENTS
- 10 .bss          00000020  2000001c  2000001c  0002001c  2**2
+ 10 .bss          00000070  2000001c  2000001c  0002001c  2**2
                   ALLOC
- 11 ._user_heap_stack 00000604  2000003c  2000003c  0002001c  2**0
+ 11 ._user_heap_stack 00000604  2000008c  2000008c  0002001c  2**0
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0002001c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000630e  00000000  00000000  0002004c  2**0
+ 13 .debug_info   0000637e  00000000  00000000  0002004c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 0000138a  00000000  00000000  0002635a  2**0
+ 14 .debug_abbrev 000013d7  00000000  00000000  000263ca  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 000004d0  00000000  00000000  000276e8  2**3
+ 15 .debug_aranges 000004d8  00000000  00000000  000277a8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 00000428  00000000  00000000  00027bb8  2**3
+ 16 .debug_ranges 00000430  00000000  00000000  00027c80  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00024332  00000000  00000000  00027fe0  2**0
+ 17 .debug_macro  00024338  00000000  00000000  000280b0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00007510  00000000  00000000  0004c312  2**0
+ 18 .debug_line   00007548  00000000  00000000  0004c3e8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000e149b  00000000  00000000  00053822  2**0
+ 19 .debug_str    000e14b7  00000000  00000000  00053930  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000053  00000000  00000000  00134cbd  2**0
+ 20 .comment      00000053  00000000  00000000  00134de7  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00001110  00000000  00000000  00134d10  2**2
+ 21 .debug_frame  00001138  00000000  00000000  00134e3c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -64,7 +64,7 @@ Disassembly of section .text:
  80001c2:	bd10      	pop	{r4, pc}
  80001c4:	2000001c 	.word	0x2000001c
  80001c8:	00000000 	.word	0x00000000
- 80001cc:	08001930 	.word	0x08001930
+ 80001cc:	08001974 	.word	0x08001974
 
 080001d0 <frame_dummy>:
  80001d0:	b508      	push	{r3, lr}
@@ -76,7 +76,7 @@ Disassembly of section .text:
  80001de:	bd08      	pop	{r3, pc}
  80001e0:	00000000 	.word	0x00000000
  80001e4:	20000020 	.word	0x20000020
- 80001e8:	08001930 	.word	0x08001930
+ 80001e8:	08001974 	.word	0x08001974
 
 080001ec <__aeabi_uldivmod>:
  80001ec:	b953      	cbnz	r3, 8000204 <__aeabi_uldivmod+0x18>
@@ -438,7 +438,7 @@ void BSP_LED_Init(Led_TypeDef Led)
  8000574:	46bd      	mov	sp, r7
  8000576:	bd80      	pop	{r7, pc}
  8000578:	40023800 	.word	0x40023800
- 800057c:	08001948 	.word	0x08001948
+ 800057c:	0800198c 	.word	0x0800198c
  8000580:	20000000 	.word	0x20000000
 
 08000584 <BSP_LED_On>:
@@ -470,7 +470,7 @@ void BSP_LED_On(Led_TypeDef Led)
  80005ac:	bd80      	pop	{r7, pc}
  80005ae:	bf00      	nop
  80005b0:	20000000 	.word	0x20000000
- 80005b4:	08001948 	.word	0x08001948
+ 80005b4:	0800198c 	.word	0x0800198c
 
 080005b8 <BSP_LED_Toggle>:
   *     @arg  LED1
@@ -501,7 +501,7 @@ void BSP_LED_Toggle(Led_TypeDef Led)
  80005e0:	bd80      	pop	{r7, pc}
  80005e2:	bf00      	nop
  80005e4:	20000000 	.word	0x20000000
- 80005e8:	08001948 	.word	0x08001948
+ 80005e8:	0800198c 	.word	0x0800198c
 
 080005ec <BSP_PB_Init>:
   *     @arg BUTTON_MODE_GPIO: Button will be used as simple IO 
@@ -3379,7 +3379,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  80015b6:	bf00      	nop
  80015b8:	40023c00 	.word	0x40023c00
  80015bc:	40023800 	.word	0x40023800
- 80015c0:	08001950 	.word	0x08001950
+ 80015c0:	08001994 	.word	0x08001994
  80015c4:	20000010 	.word	0x20000010
  80015c8:	20000014 	.word	0x20000014
 
@@ -3604,345 +3604,389 @@ __weak uint32_t HAL_RCC_GetSysClockFreq(void)
  8001788:	00f42400 	.word	0x00f42400
  800178c:	007a1200 	.word	0x007a1200
 
-08001790 <main>:
-  * @brief  Main program
-  * @param  None
+08001790 <zeros>:
   * @retval None
   */
+uint32_t vector[tam];
+
+void zeros (uint32_t * vec, uint32_t longitud)
+{
+ 8001790:	b480      	push	{r7}
+ 8001792:	b085      	sub	sp, #20
+ 8001794:	af00      	add	r7, sp, #0
+ 8001796:	6078      	str	r0, [r7, #4]
+ 8001798:	6039      	str	r1, [r7, #0]
+	for(uint32_t i=0; i<longitud; i++)
+ 800179a:	2300      	movs	r3, #0
+ 800179c:	60fb      	str	r3, [r7, #12]
+ 800179e:	e008      	b.n	80017b2 <zeros+0x22>
+	{
+		*(vec+i)=0;
+ 80017a0:	68fb      	ldr	r3, [r7, #12]
+ 80017a2:	009b      	lsls	r3, r3, #2
+ 80017a4:	687a      	ldr	r2, [r7, #4]
+ 80017a6:	4413      	add	r3, r2
+ 80017a8:	2200      	movs	r2, #0
+ 80017aa:	601a      	str	r2, [r3, #0]
+	for(uint32_t i=0; i<longitud; i++)
+ 80017ac:	68fb      	ldr	r3, [r7, #12]
+ 80017ae:	3301      	adds	r3, #1
+ 80017b0:	60fb      	str	r3, [r7, #12]
+ 80017b2:	68fa      	ldr	r2, [r7, #12]
+ 80017b4:	683b      	ldr	r3, [r7, #0]
+ 80017b6:	429a      	cmp	r2, r3
+ 80017b8:	d3f2      	bcc.n	80017a0 <zeros+0x10>
+	}
+}
+ 80017ba:	bf00      	nop
+ 80017bc:	bf00      	nop
+ 80017be:	3714      	adds	r7, #20
+ 80017c0:	46bd      	mov	sp, r7
+ 80017c2:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 80017c6:	4770      	bx	lr
+
+080017c8 <main>:
+
 int main(void)
 {
- 8001790:	b580      	push	{r7, lr}
- 8001792:	af00      	add	r7, sp, #0
+ 80017c8:	b580      	push	{r7, lr}
+ 80017ca:	af00      	add	r7, sp, #0
          duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and 
          handled in milliseconds basis.
        - Set NVIC Group Priority to 4
        - Low Level Initialization
      */
   HAL_Init();
- 8001794:	f7fe ffe4 	bl	8000760 <HAL_Init>
+ 80017cc:	f7fe ffc8 	bl	8000760 <HAL_Init>
 
   /* Configure the system clock to 180 MHz */
   SystemClock_Config();
- 8001798:	f000 f814 	bl	80017c4 <SystemClock_Config>
+ 80017d0:	f000 f81a 	bl	8001808 <SystemClock_Config>
 
   /* Initialize BSP Led for LED's */
   BSP_LED_Init(LED1);
- 800179c:	2000      	movs	r0, #0
- 800179e:	f7fe fea1 	bl	80004e4 <BSP_LED_Init>
+ 80017d4:	2000      	movs	r0, #0
+ 80017d6:	f7fe fe85 	bl	80004e4 <BSP_LED_Init>
   BSP_LED_Init(LED2);
- 80017a2:	2001      	movs	r0, #1
- 80017a4:	f7fe fe9e 	bl	80004e4 <BSP_LED_Init>
+ 80017da:	2001      	movs	r0, #1
+ 80017dc:	f7fe fe82 	bl	80004e4 <BSP_LED_Init>
   BSP_LED_Init(LED3);
- 80017a8:	2002      	movs	r0, #2
- 80017aa:	f7fe fe9b 	bl	80004e4 <BSP_LED_Init>
+ 80017e0:	2002      	movs	r0, #2
+ 80017e2:	f7fe fe7f 	bl	80004e4 <BSP_LED_Init>
 
   /*Initialize Push Button */
   BSP_PB_Init(BUTTON_USER,BUTTON_MODE_GPIO);
- 80017ae:	2100      	movs	r1, #0
- 80017b0:	2000      	movs	r0, #0
- 80017b2:	f7fe ff1b 	bl	80005ec <BSP_PB_Init>
+ 80017e6:	2100      	movs	r1, #0
+ 80017e8:	2000      	movs	r0, #0
+ 80017ea:	f7fe feff 	bl	80005ec <BSP_PB_Init>
+
+  zeros(&vector,sizeof(vector)/sizeof(uint32_t));
+ 80017ee:	2103      	movs	r1, #3
+ 80017f0:	4804      	ldr	r0, [pc, #16]	; (8001804 <main+0x3c>)
+ 80017f2:	f7ff ffcd 	bl	8001790 <zeros>
 
 
   /* Infinite loop */
   while (1)
   {
 	  BSP_LED_Toggle(LED1);
- 80017b6:	2000      	movs	r0, #0
- 80017b8:	f7fe fefe 	bl	80005b8 <BSP_LED_Toggle>
+ 80017f6:	2000      	movs	r0, #0
+ 80017f8:	f7fe fede 	bl	80005b8 <BSP_LED_Toggle>
 	  HAL_Delay(200);
- 80017bc:	20c8      	movs	r0, #200	; 0xc8
- 80017be:	f7ff f83b 	bl	8000838 <HAL_Delay>
+ 80017fc:	20c8      	movs	r0, #200	; 0xc8
+ 80017fe:	f7ff f81b 	bl	8000838 <HAL_Delay>
 	  BSP_LED_Toggle(LED1);
- 80017c2:	e7f8      	b.n	80017b6 <main+0x26>
+ 8001802:	e7f8      	b.n	80017f6 <main+0x2e>
+ 8001804:	20000080 	.word	0x20000080
 
-080017c4 <SystemClock_Config>:
+08001808 <SystemClock_Config>:
   *            Flash Latency(WS)              = 5
   * @param  None
   * @retval None
   */
 static void SystemClock_Config(void)
 {
- 80017c4:	b580      	push	{r7, lr}
- 80017c6:	b094      	sub	sp, #80	; 0x50
- 80017c8:	af00      	add	r7, sp, #0
+ 8001808:	b580      	push	{r7, lr}
+ 800180a:	b094      	sub	sp, #80	; 0x50
+ 800180c:	af00      	add	r7, sp, #0
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_OscInitTypeDef RCC_OscInitStruct;
 
   /* Enable Power Control clock */
   __HAL_RCC_PWR_CLK_ENABLE();
- 80017ca:	2300      	movs	r3, #0
- 80017cc:	60bb      	str	r3, [r7, #8]
- 80017ce:	4b2c      	ldr	r3, [pc, #176]	; (8001880 <SystemClock_Config+0xbc>)
- 80017d0:	6c1b      	ldr	r3, [r3, #64]	; 0x40
- 80017d2:	4a2b      	ldr	r2, [pc, #172]	; (8001880 <SystemClock_Config+0xbc>)
- 80017d4:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
- 80017d8:	6413      	str	r3, [r2, #64]	; 0x40
- 80017da:	4b29      	ldr	r3, [pc, #164]	; (8001880 <SystemClock_Config+0xbc>)
- 80017dc:	6c1b      	ldr	r3, [r3, #64]	; 0x40
- 80017de:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
- 80017e2:	60bb      	str	r3, [r7, #8]
- 80017e4:	68bb      	ldr	r3, [r7, #8]
+ 800180e:	2300      	movs	r3, #0
+ 8001810:	60bb      	str	r3, [r7, #8]
+ 8001812:	4b2c      	ldr	r3, [pc, #176]	; (80018c4 <SystemClock_Config+0xbc>)
+ 8001814:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8001816:	4a2b      	ldr	r2, [pc, #172]	; (80018c4 <SystemClock_Config+0xbc>)
+ 8001818:	f043 5380 	orr.w	r3, r3, #268435456	; 0x10000000
+ 800181c:	6413      	str	r3, [r2, #64]	; 0x40
+ 800181e:	4b29      	ldr	r3, [pc, #164]	; (80018c4 <SystemClock_Config+0xbc>)
+ 8001820:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8001822:	f003 5380 	and.w	r3, r3, #268435456	; 0x10000000
+ 8001826:	60bb      	str	r3, [r7, #8]
+ 8001828:	68bb      	ldr	r3, [r7, #8]
   
   /* The voltage scaling allows optimizing the power consumption when the device is 
      clocked below the maximum system frequency, to update the voltage scaling value 
      regarding system frequency refer to product datasheet.  */
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
- 80017e6:	2300      	movs	r3, #0
- 80017e8:	607b      	str	r3, [r7, #4]
- 80017ea:	4b26      	ldr	r3, [pc, #152]	; (8001884 <SystemClock_Config+0xc0>)
- 80017ec:	681b      	ldr	r3, [r3, #0]
- 80017ee:	4a25      	ldr	r2, [pc, #148]	; (8001884 <SystemClock_Config+0xc0>)
- 80017f0:	f443 4340 	orr.w	r3, r3, #49152	; 0xc000
- 80017f4:	6013      	str	r3, [r2, #0]
- 80017f6:	4b23      	ldr	r3, [pc, #140]	; (8001884 <SystemClock_Config+0xc0>)
- 80017f8:	681b      	ldr	r3, [r3, #0]
- 80017fa:	f403 4340 	and.w	r3, r3, #49152	; 0xc000
- 80017fe:	607b      	str	r3, [r7, #4]
- 8001800:	687b      	ldr	r3, [r7, #4]
+ 800182a:	2300      	movs	r3, #0
+ 800182c:	607b      	str	r3, [r7, #4]
+ 800182e:	4b26      	ldr	r3, [pc, #152]	; (80018c8 <SystemClock_Config+0xc0>)
+ 8001830:	681b      	ldr	r3, [r3, #0]
+ 8001832:	4a25      	ldr	r2, [pc, #148]	; (80018c8 <SystemClock_Config+0xc0>)
+ 8001834:	f443 4340 	orr.w	r3, r3, #49152	; 0xc000
+ 8001838:	6013      	str	r3, [r2, #0]
+ 800183a:	4b23      	ldr	r3, [pc, #140]	; (80018c8 <SystemClock_Config+0xc0>)
+ 800183c:	681b      	ldr	r3, [r3, #0]
+ 800183e:	f403 4340 	and.w	r3, r3, #49152	; 0xc000
+ 8001842:	607b      	str	r3, [r7, #4]
+ 8001844:	687b      	ldr	r3, [r7, #4]
   
   /* Enable HSE Oscillator and activate PLL with HSE as source */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
- 8001802:	2301      	movs	r3, #1
- 8001804:	60fb      	str	r3, [r7, #12]
+ 8001846:	2301      	movs	r3, #1
+ 8001848:	60fb      	str	r3, [r7, #12]
   RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
- 8001806:	f44f 23a0 	mov.w	r3, #327680	; 0x50000
- 800180a:	613b      	str	r3, [r7, #16]
+ 800184a:	f44f 23a0 	mov.w	r3, #327680	; 0x50000
+ 800184e:	613b      	str	r3, [r7, #16]
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
- 800180c:	2302      	movs	r3, #2
- 800180e:	627b      	str	r3, [r7, #36]	; 0x24
+ 8001850:	2302      	movs	r3, #2
+ 8001852:	627b      	str	r3, [r7, #36]	; 0x24
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
- 8001810:	f44f 0380 	mov.w	r3, #4194304	; 0x400000
- 8001814:	62bb      	str	r3, [r7, #40]	; 0x28
+ 8001854:	f44f 0380 	mov.w	r3, #4194304	; 0x400000
+ 8001858:	62bb      	str	r3, [r7, #40]	; 0x28
   RCC_OscInitStruct.PLL.PLLM = 8;
- 8001816:	2308      	movs	r3, #8
- 8001818:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 800185a:	2308      	movs	r3, #8
+ 800185c:	62fb      	str	r3, [r7, #44]	; 0x2c
   RCC_OscInitStruct.PLL.PLLN = 360;
- 800181a:	f44f 73b4 	mov.w	r3, #360	; 0x168
- 800181e:	633b      	str	r3, [r7, #48]	; 0x30
+ 800185e:	f44f 73b4 	mov.w	r3, #360	; 0x168
+ 8001862:	633b      	str	r3, [r7, #48]	; 0x30
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
- 8001820:	2302      	movs	r3, #2
- 8001822:	637b      	str	r3, [r7, #52]	; 0x34
+ 8001864:	2302      	movs	r3, #2
+ 8001866:	637b      	str	r3, [r7, #52]	; 0x34
   RCC_OscInitStruct.PLL.PLLQ = 7;
- 8001824:	2307      	movs	r3, #7
- 8001826:	63bb      	str	r3, [r7, #56]	; 0x38
+ 8001868:	2307      	movs	r3, #7
+ 800186a:	63bb      	str	r3, [r7, #56]	; 0x38
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
- 8001828:	f107 030c 	add.w	r3, r7, #12
- 800182c:	4618      	mov	r0, r3
- 800182e:	f7ff fb6f 	bl	8000f10 <HAL_RCC_OscConfig>
- 8001832:	4603      	mov	r3, r0
- 8001834:	2b00      	cmp	r3, #0
- 8001836:	d001      	beq.n	800183c <SystemClock_Config+0x78>
+ 800186c:	f107 030c 	add.w	r3, r7, #12
+ 8001870:	4618      	mov	r0, r3
+ 8001872:	f7ff fb4d 	bl	8000f10 <HAL_RCC_OscConfig>
+ 8001876:	4603      	mov	r3, r0
+ 8001878:	2b00      	cmp	r3, #0
+ 800187a:	d001      	beq.n	8001880 <SystemClock_Config+0x78>
   {
     /* Initialization Error */
     Error_Handler();
- 8001838:	f000 f826 	bl	8001888 <Error_Handler>
+ 800187c:	f000 f826 	bl	80018cc <Error_Handler>
   }
   
   if(HAL_PWREx_EnableOverDrive() != HAL_OK)
- 800183c:	f7ff fb18 	bl	8000e70 <HAL_PWREx_EnableOverDrive>
- 8001840:	4603      	mov	r3, r0
- 8001842:	2b00      	cmp	r3, #0
- 8001844:	d001      	beq.n	800184a <SystemClock_Config+0x86>
+ 8001880:	f7ff faf6 	bl	8000e70 <HAL_PWREx_EnableOverDrive>
+ 8001884:	4603      	mov	r3, r0
+ 8001886:	2b00      	cmp	r3, #0
+ 8001888:	d001      	beq.n	800188e <SystemClock_Config+0x86>
   {
     /* Initialization Error */
     Error_Handler();
- 8001846:	f000 f81f 	bl	8001888 <Error_Handler>
+ 800188a:	f000 f81f 	bl	80018cc <Error_Handler>
   }
   
   /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2 
      clocks dividers */
   RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
- 800184a:	230f      	movs	r3, #15
- 800184c:	63fb      	str	r3, [r7, #60]	; 0x3c
+ 800188e:	230f      	movs	r3, #15
+ 8001890:	63fb      	str	r3, [r7, #60]	; 0x3c
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
- 800184e:	2302      	movs	r3, #2
- 8001850:	643b      	str	r3, [r7, #64]	; 0x40
+ 8001892:	2302      	movs	r3, #2
+ 8001894:	643b      	str	r3, [r7, #64]	; 0x40
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
- 8001852:	2300      	movs	r3, #0
- 8001854:	647b      	str	r3, [r7, #68]	; 0x44
+ 8001896:	2300      	movs	r3, #0
+ 8001898:	647b      	str	r3, [r7, #68]	; 0x44
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;  
- 8001856:	f44f 53a0 	mov.w	r3, #5120	; 0x1400
- 800185a:	64bb      	str	r3, [r7, #72]	; 0x48
+ 800189a:	f44f 53a0 	mov.w	r3, #5120	; 0x1400
+ 800189e:	64bb      	str	r3, [r7, #72]	; 0x48
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;  
- 800185c:	f44f 5380 	mov.w	r3, #4096	; 0x1000
- 8001860:	64fb      	str	r3, [r7, #76]	; 0x4c
+ 80018a0:	f44f 5380 	mov.w	r3, #4096	; 0x1000
+ 80018a4:	64fb      	str	r3, [r7, #76]	; 0x4c
   if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
- 8001862:	f107 033c 	add.w	r3, r7, #60	; 0x3c
- 8001866:	2105      	movs	r1, #5
- 8001868:	4618      	mov	r0, r3
- 800186a:	f7ff fdc9 	bl	8001400 <HAL_RCC_ClockConfig>
- 800186e:	4603      	mov	r3, r0
- 8001870:	2b00      	cmp	r3, #0
- 8001872:	d001      	beq.n	8001878 <SystemClock_Config+0xb4>
+ 80018a6:	f107 033c 	add.w	r3, r7, #60	; 0x3c
+ 80018aa:	2105      	movs	r1, #5
+ 80018ac:	4618      	mov	r0, r3
+ 80018ae:	f7ff fda7 	bl	8001400 <HAL_RCC_ClockConfig>
+ 80018b2:	4603      	mov	r3, r0
+ 80018b4:	2b00      	cmp	r3, #0
+ 80018b6:	d001      	beq.n	80018bc <SystemClock_Config+0xb4>
   {
     /* Initialization Error */
     Error_Handler();
- 8001874:	f000 f808 	bl	8001888 <Error_Handler>
+ 80018b8:	f000 f808 	bl	80018cc <Error_Handler>
   }
 }
- 8001878:	bf00      	nop
- 800187a:	3750      	adds	r7, #80	; 0x50
- 800187c:	46bd      	mov	sp, r7
- 800187e:	bd80      	pop	{r7, pc}
- 8001880:	40023800 	.word	0x40023800
- 8001884:	40007000 	.word	0x40007000
+ 80018bc:	bf00      	nop
+ 80018be:	3750      	adds	r7, #80	; 0x50
+ 80018c0:	46bd      	mov	sp, r7
+ 80018c2:	bd80      	pop	{r7, pc}
+ 80018c4:	40023800 	.word	0x40023800
+ 80018c8:	40007000 	.word	0x40007000
 
-08001888 <Error_Handler>:
+080018cc <Error_Handler>:
   * @brief  This function is executed in case of error occurrence.
   * @param  None
   * @retval None
   */
 static void Error_Handler(void)
 {
- 8001888:	b580      	push	{r7, lr}
- 800188a:	af00      	add	r7, sp, #0
+ 80018cc:	b580      	push	{r7, lr}
+ 80018ce:	af00      	add	r7, sp, #0
   /* Turn LED2 on */
   BSP_LED_On(LED2);
- 800188c:	2001      	movs	r0, #1
- 800188e:	f7fe fe79 	bl	8000584 <BSP_LED_On>
+ 80018d0:	2001      	movs	r0, #1
+ 80018d2:	f7fe fe57 	bl	8000584 <BSP_LED_On>
   while (1)
- 8001892:	e7fe      	b.n	8001892 <Error_Handler+0xa>
+ 80018d6:	e7fe      	b.n	80018d6 <Error_Handler+0xa>
 
-08001894 <Reset_Handler>:
+080018d8 <Reset_Handler>:
 
     .section  .text.Reset_Handler
   .weak  Reset_Handler
   .type  Reset_Handler, %function
 Reset_Handler: 
   ldr   sp, =_estack       /* set stack pointer */
- 8001894:	f8df d034 	ldr.w	sp, [pc, #52]	; 80018cc <LoopFillZerobss+0x14>
+ 80018d8:	f8df d034 	ldr.w	sp, [pc, #52]	; 8001910 <LoopFillZerobss+0x14>
  
 /* Copy the data segment initializers from flash to SRAM */  
   movs  r1, #0
- 8001898:	2100      	movs	r1, #0
+ 80018dc:	2100      	movs	r1, #0
   b  LoopCopyDataInit
- 800189a:	e003      	b.n	80018a4 <LoopCopyDataInit>
+ 80018de:	e003      	b.n	80018e8 <LoopCopyDataInit>
 
-0800189c <CopyDataInit>:
+080018e0 <CopyDataInit>:
 
 CopyDataInit:
   ldr  r3, =_sidata
- 800189c:	4b0c      	ldr	r3, [pc, #48]	; (80018d0 <LoopFillZerobss+0x18>)
+ 80018e0:	4b0c      	ldr	r3, [pc, #48]	; (8001914 <LoopFillZerobss+0x18>)
   ldr  r3, [r3, r1]
- 800189e:	585b      	ldr	r3, [r3, r1]
+ 80018e2:	585b      	ldr	r3, [r3, r1]
   str  r3, [r0, r1]
- 80018a0:	5043      	str	r3, [r0, r1]
+ 80018e4:	5043      	str	r3, [r0, r1]
   adds  r1, r1, #4
- 80018a2:	3104      	adds	r1, #4
+ 80018e6:	3104      	adds	r1, #4
 
-080018a4 <LoopCopyDataInit>:
+080018e8 <LoopCopyDataInit>:
     
 LoopCopyDataInit:
   ldr  r0, =_sdata
- 80018a4:	480b      	ldr	r0, [pc, #44]	; (80018d4 <LoopFillZerobss+0x1c>)
+ 80018e8:	480b      	ldr	r0, [pc, #44]	; (8001918 <LoopFillZerobss+0x1c>)
   ldr  r3, =_edata
- 80018a6:	4b0c      	ldr	r3, [pc, #48]	; (80018d8 <LoopFillZerobss+0x20>)
+ 80018ea:	4b0c      	ldr	r3, [pc, #48]	; (800191c <LoopFillZerobss+0x20>)
   adds  r2, r0, r1
- 80018a8:	1842      	adds	r2, r0, r1
+ 80018ec:	1842      	adds	r2, r0, r1
   cmp  r2, r3
- 80018aa:	429a      	cmp	r2, r3
+ 80018ee:	429a      	cmp	r2, r3
   bcc  CopyDataInit
- 80018ac:	d3f6      	bcc.n	800189c <CopyDataInit>
+ 80018f0:	d3f6      	bcc.n	80018e0 <CopyDataInit>
   ldr  r2, =_sbss
- 80018ae:	4a0b      	ldr	r2, [pc, #44]	; (80018dc <LoopFillZerobss+0x24>)
+ 80018f2:	4a0b      	ldr	r2, [pc, #44]	; (8001920 <LoopFillZerobss+0x24>)
   b  LoopFillZerobss
- 80018b0:	e002      	b.n	80018b8 <LoopFillZerobss>
+ 80018f4:	e002      	b.n	80018fc <LoopFillZerobss>
 
-080018b2 <FillZerobss>:
+080018f6 <FillZerobss>:
 /* Zero fill the bss segment. */  
 FillZerobss:
   movs  r3, #0
- 80018b2:	2300      	movs	r3, #0
+ 80018f6:	2300      	movs	r3, #0
   str  r3, [r2], #4
- 80018b4:	f842 3b04 	str.w	r3, [r2], #4
+ 80018f8:	f842 3b04 	str.w	r3, [r2], #4
 
-080018b8 <LoopFillZerobss>:
+080018fc <LoopFillZerobss>:
     
 LoopFillZerobss:
   ldr  r3, = _ebss
- 80018b8:	4b09      	ldr	r3, [pc, #36]	; (80018e0 <LoopFillZerobss+0x28>)
+ 80018fc:	4b09      	ldr	r3, [pc, #36]	; (8001924 <LoopFillZerobss+0x28>)
   cmp  r2, r3
- 80018ba:	429a      	cmp	r2, r3
+ 80018fe:	429a      	cmp	r2, r3
   bcc  FillZerobss
- 80018bc:	d3f9      	bcc.n	80018b2 <FillZerobss>
+ 8001900:	d3f9      	bcc.n	80018f6 <FillZerobss>
 
 /* Call the clock system intitialization function.*/
   bl  SystemInit   
- 80018be:	f7fe feeb 	bl	8000698 <SystemInit>
+ 8001902:	f7fe fec9 	bl	8000698 <SystemInit>
 /* Call static constructors */
     bl __libc_init_array
- 80018c2:	f000 f811 	bl	80018e8 <__libc_init_array>
+ 8001906:	f000 f811 	bl	800192c <__libc_init_array>
 /* Call the application's entry point.*/
   bl  main
- 80018c6:	f7ff ff63 	bl	8001790 <main>
+ 800190a:	f7ff ff5d 	bl	80017c8 <main>
   bx  lr    
- 80018ca:	4770      	bx	lr
+ 800190e:	4770      	bx	lr
   ldr   sp, =_estack       /* set stack pointer */
- 80018cc:	20030000 	.word	0x20030000
+ 8001910:	20030000 	.word	0x20030000
   ldr  r3, =_sidata
- 80018d0:	08001970 	.word	0x08001970
+ 8001914:	080019b4 	.word	0x080019b4
   ldr  r0, =_sdata
- 80018d4:	20000000 	.word	0x20000000
+ 8001918:	20000000 	.word	0x20000000
   ldr  r3, =_edata
- 80018d8:	2000001c 	.word	0x2000001c
+ 800191c:	2000001c 	.word	0x2000001c
   ldr  r2, =_sbss
- 80018dc:	2000001c 	.word	0x2000001c
+ 8001920:	2000001c 	.word	0x2000001c
   ldr  r3, = _ebss
- 80018e0:	2000003c 	.word	0x2000003c
+ 8001924:	2000008c 	.word	0x2000008c
 
-080018e4 <ADC_IRQHandler>:
+08001928 <ADC_IRQHandler>:
  * @retval None       
 */
     .section  .text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
   b  Infinite_Loop
- 80018e4:	e7fe      	b.n	80018e4 <ADC_IRQHandler>
+ 8001928:	e7fe      	b.n	8001928 <ADC_IRQHandler>
 	...
 
-080018e8 <__libc_init_array>:
- 80018e8:	b570      	push	{r4, r5, r6, lr}
- 80018ea:	4d0d      	ldr	r5, [pc, #52]	; (8001920 <__libc_init_array+0x38>)
- 80018ec:	4c0d      	ldr	r4, [pc, #52]	; (8001924 <__libc_init_array+0x3c>)
- 80018ee:	1b64      	subs	r4, r4, r5
- 80018f0:	10a4      	asrs	r4, r4, #2
- 80018f2:	2600      	movs	r6, #0
- 80018f4:	42a6      	cmp	r6, r4
- 80018f6:	d109      	bne.n	800190c <__libc_init_array+0x24>
- 80018f8:	4d0b      	ldr	r5, [pc, #44]	; (8001928 <__libc_init_array+0x40>)
- 80018fa:	4c0c      	ldr	r4, [pc, #48]	; (800192c <__libc_init_array+0x44>)
- 80018fc:	f000 f818 	bl	8001930 <_init>
- 8001900:	1b64      	subs	r4, r4, r5
- 8001902:	10a4      	asrs	r4, r4, #2
- 8001904:	2600      	movs	r6, #0
- 8001906:	42a6      	cmp	r6, r4
- 8001908:	d105      	bne.n	8001916 <__libc_init_array+0x2e>
- 800190a:	bd70      	pop	{r4, r5, r6, pc}
- 800190c:	f855 3b04 	ldr.w	r3, [r5], #4
- 8001910:	4798      	blx	r3
- 8001912:	3601      	adds	r6, #1
- 8001914:	e7ee      	b.n	80018f4 <__libc_init_array+0xc>
- 8001916:	f855 3b04 	ldr.w	r3, [r5], #4
- 800191a:	4798      	blx	r3
- 800191c:	3601      	adds	r6, #1
- 800191e:	e7f2      	b.n	8001906 <__libc_init_array+0x1e>
- 8001920:	08001968 	.word	0x08001968
- 8001924:	08001968 	.word	0x08001968
- 8001928:	08001968 	.word	0x08001968
- 800192c:	0800196c 	.word	0x0800196c
+0800192c <__libc_init_array>:
+ 800192c:	b570      	push	{r4, r5, r6, lr}
+ 800192e:	4d0d      	ldr	r5, [pc, #52]	; (8001964 <__libc_init_array+0x38>)
+ 8001930:	4c0d      	ldr	r4, [pc, #52]	; (8001968 <__libc_init_array+0x3c>)
+ 8001932:	1b64      	subs	r4, r4, r5
+ 8001934:	10a4      	asrs	r4, r4, #2
+ 8001936:	2600      	movs	r6, #0
+ 8001938:	42a6      	cmp	r6, r4
+ 800193a:	d109      	bne.n	8001950 <__libc_init_array+0x24>
+ 800193c:	4d0b      	ldr	r5, [pc, #44]	; (800196c <__libc_init_array+0x40>)
+ 800193e:	4c0c      	ldr	r4, [pc, #48]	; (8001970 <__libc_init_array+0x44>)
+ 8001940:	f000 f818 	bl	8001974 <_init>
+ 8001944:	1b64      	subs	r4, r4, r5
+ 8001946:	10a4      	asrs	r4, r4, #2
+ 8001948:	2600      	movs	r6, #0
+ 800194a:	42a6      	cmp	r6, r4
+ 800194c:	d105      	bne.n	800195a <__libc_init_array+0x2e>
+ 800194e:	bd70      	pop	{r4, r5, r6, pc}
+ 8001950:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8001954:	4798      	blx	r3
+ 8001956:	3601      	adds	r6, #1
+ 8001958:	e7ee      	b.n	8001938 <__libc_init_array+0xc>
+ 800195a:	f855 3b04 	ldr.w	r3, [r5], #4
+ 800195e:	4798      	blx	r3
+ 8001960:	3601      	adds	r6, #1
+ 8001962:	e7f2      	b.n	800194a <__libc_init_array+0x1e>
+ 8001964:	080019ac 	.word	0x080019ac
+ 8001968:	080019ac 	.word	0x080019ac
+ 800196c:	080019ac 	.word	0x080019ac
+ 8001970:	080019b0 	.word	0x080019b0
 
-08001930 <_init>:
- 8001930:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8001932:	bf00      	nop
- 8001934:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8001936:	bc08      	pop	{r3}
- 8001938:	469e      	mov	lr, r3
- 800193a:	4770      	bx	lr
+08001974 <_init>:
+ 8001974:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8001976:	bf00      	nop
+ 8001978:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 800197a:	bc08      	pop	{r3}
+ 800197c:	469e      	mov	lr, r3
+ 800197e:	4770      	bx	lr
 
-0800193c <_fini>:
- 800193c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 800193e:	bf00      	nop
- 8001940:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8001942:	bc08      	pop	{r3}
- 8001944:	469e      	mov	lr, r3
- 8001946:	4770      	bx	lr
+08001980 <_fini>:
+ 8001980:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8001982:	bf00      	nop
+ 8001984:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8001986:	bc08      	pop	{r3}
+ 8001988:	469e      	mov	lr, r3
+ 800198a:	4770      	bx	lr

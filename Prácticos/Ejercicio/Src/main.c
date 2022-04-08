@@ -20,7 +20,9 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdio.h>
 
+#define tam 3   //elementos del vector
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
   */
@@ -43,11 +45,23 @@ static void Error_Handler(void);
 
 /* Private functions ---------------------------------------------------------*/
 
+void zeros (uint32_t * vector, uint32_t longitud);
+
 /**
   * @brief  Main program
   * @param  None
   * @retval None
   */
+uint32_t vector[tam];
+
+void zeros (uint32_t * vec, uint32_t longitud)
+{
+	for(uint32_t i=0; i<longitud; i++)
+	{
+		*(vec+i)=0;
+	}
+}
+
 int main(void)
 {
   /* STM32F4xx HAL library initialization:
@@ -73,12 +87,15 @@ int main(void)
   /*Initialize Push Button */
   BSP_PB_Init(BUTTON_USER,BUTTON_MODE_GPIO);
 
+  zeros(&vector,sizeof(vector)/sizeof(uint32_t));
+
 
   /* Infinite loop */
   while (1)
   {
 	  BSP_LED_Toggle(LED1);
 	  HAL_Delay(200);
+
    }
 
 }
