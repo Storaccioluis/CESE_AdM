@@ -23,7 +23,8 @@
 #include <stdio.h>
 
 #define tam 3   //elementos del vector
-#define vEscalar 2
+uint32_t vEscalar=2;
+uint16_t vEscalar16=2;
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
   */
@@ -48,14 +49,19 @@ static void Error_Handler(void);
 
 void zeros (uint32_t * vector, uint32_t longitud);
 void productoEscalar32(uint32_t * vecIn, uint32_t * vecOut ,uint32_t longitud, uint32_t escalar);
+void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar);
 /**
   * @brief  Main program
   * @param  None
   * @retval None
   */
 uint32_t vector[tam];
+
 uint32_t vectorIn[tam]={1};
 uint32_t vectorOut[tam];
+
+uint32_t vectorIn16[tam]={1};
+uint32_t vectorOut16[tam];
 
 
 void zeros (uint32_t * vec, uint32_t longitud)
@@ -69,7 +75,15 @@ void zeros (uint32_t * vec, uint32_t longitud)
 void productoEscalar32(uint32_t * vecIn, uint32_t * vecOut ,uint32_t longitud, uint32_t escalar)
 { for(uint32_t i=0; i<longitud; i++)
    {
-	  *(vectorOut+i)=*(vectorIn +i)*escalar;
+	  *(vecOut+i)=*(vecIn +i)*escalar;
+
+   }
+}
+
+void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar)
+{ for(uint32_t i=0; i<longitud; i++)
+   {
+	  *(vecOut+i)=*(vecIn +i)*escalar;
 
    }
 }
@@ -102,6 +116,8 @@ int main(void)
 
   zeros(&vector,sizeof(vector)/sizeof(uint32_t));
   productoEscalar32(&vectorIn,&vectorOut,tam, vEscalar);
+  productoEscalar16(&vectorIn16,&vectorOut16,tam, vEscalar16);
+
 
   /* Infinite loop */
   while (1)
