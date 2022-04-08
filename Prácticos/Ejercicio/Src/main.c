@@ -50,6 +50,7 @@ static void Error_Handler(void);
 void zeros (uint32_t * vector, uint32_t longitud);
 void productoEscalar32(uint32_t * vecIn, uint32_t * vecOut ,uint32_t longitud, uint32_t escalar);
 void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar);
+void productoEscalar12 (uint16_t * vecIn, uint16_t * vecOut, uint32_t longitud, uint16_t escalar);
 /**
   * @brief  Main program
   * @param  None
@@ -63,6 +64,8 @@ uint32_t vectorOut[tam];
 uint32_t vectorIn16[tam]={1};
 uint32_t vectorOut16[tam];
 
+uint32_t vectorIn12[tam]={1,2,3};
+uint32_t vectorOut12[tam];
 
 void zeros (uint32_t * vec, uint32_t longitud)
 {
@@ -84,6 +87,16 @@ void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, u
 { for(uint32_t i=0; i<longitud; i++)
    {
 	  *(vecOut+i)=*(vecIn +i)*escalar;
+
+   }
+}
+
+void productoEscalar12(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar)
+{  uint16_t valor;
+	for(uint32_t i=0; i<longitud; i++)
+   { valor=*(vecIn +i)*escalar;
+	 if(valor<0b100000000000)
+	 { *(vecOut+i)=valor;}
 
    }
 }
@@ -117,7 +130,7 @@ int main(void)
   zeros(&vector,sizeof(vector)/sizeof(uint32_t));
   productoEscalar32(&vectorIn,&vectorOut,tam, vEscalar);
   productoEscalar16(&vectorIn16,&vectorOut16,tam, vEscalar16);
-
+  productoEscalar12(&vectorIn12,&vectorOut12,tam, vEscalar16);
 
   /* Infinite loop */
   while (1)
