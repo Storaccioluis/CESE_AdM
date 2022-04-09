@@ -24,7 +24,7 @@
 
 #define tam 3   //elementos del vector
 uint32_t vEscalar=2;
-uint16_t vEscalar16=2;
+uint16_t vEscalar16=4;
 /** @addtogroup STM32F4xx_HAL_Examples
   * @{
   */
@@ -58,20 +58,23 @@ void productoEscalar12 (uint16_t * vecIn, uint16_t * vecOut, uint32_t longitud, 
   */
 uint32_t vector[tam];
 
-uint32_t vectorIn[tam]={1};
+uint32_t vectorIn[tam]={1,1,1};
 uint32_t vectorOut[tam];
 
-uint32_t vectorIn16[tam]={1};
-uint32_t vectorOut16[tam];
+uint16_t vectorIn16[tam]={1,1,1};
+uint16_t vectorOut16[tam];
 
-uint32_t vectorIn12[tam]={1,2,3};
-uint32_t vectorOut12[tam];
+uint16_t vectorIn12[tam]={1,2,3};
+uint16_t vectorOut12[tam];
+
+uint32_t vectorPrueba[tam];
 
 void zeros (uint32_t * vec, uint32_t longitud)
 {
 	for(uint32_t i=0; i<longitud; i++)
 	{
-		*(vec+i)=0;
+		*(vec+i)=1;
+		 vectorPrueba[i]= *(vec+i);
 	}
 }
 
@@ -79,24 +82,25 @@ void productoEscalar32(uint32_t * vecIn, uint32_t * vecOut ,uint32_t longitud, u
 { for(uint32_t i=0; i<longitud; i++)
    {
 	  *(vecOut+i)=*(vecIn +i)*escalar;
-
+	  vectorPrueba[i]= *(vecOut+i);
    }
 }
 
 void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar)
-{ for(uint32_t i=0; i<longitud; i++)
+{ for(uint16_t i=0; i<longitud; i++)
    {
 	  *(vecOut+i)=*(vecIn +i)*escalar;
-
+	  vectorPrueba[i]= *(vecOut+i);
    }
 }
 
 void productoEscalar12(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, uint16_t escalar)
 {  uint16_t valor;
-	for(uint32_t i=0; i<longitud; i++)
+	for(uint16_t i=0; i<longitud; i++)
    { valor=*(vecIn +i)*escalar;
-	 if(valor<0b100000000000)
-	 { *(vecOut+i)=valor;}
+     *(vecOut+i)=valor;
+	 if(valor>0x0FFF)
+	 { *(vecOut+i)=0x0FFF;}
 
    }
 }
