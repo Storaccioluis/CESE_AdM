@@ -67,14 +67,13 @@ uint16_t vectorOut16[tam];
 uint16_t vectorIn12[tam]={1,2,3};
 uint16_t vectorOut12[tam];
 
-uint32_t vectorPrueba[tam];
 
 void zeros (uint32_t * vec, uint32_t longitud)
 {
 	for(uint32_t i=0; i<longitud; i++)
 	{
 		*(vec+i)=1;
-		 vectorPrueba[i]= *(vec+i);
+
 	}
 }
 
@@ -82,7 +81,7 @@ void productoEscalar32(uint32_t * vecIn, uint32_t * vecOut ,uint32_t longitud, u
 { for(uint32_t i=0; i<longitud; i++)
    {
 	  *(vecOut+i)=*(vecIn +i)*escalar;
-	  vectorPrueba[i]= *(vecOut+i);
+
    }
 }
 
@@ -90,7 +89,7 @@ void productoEscalar16(uint16_t * vecIn, uint16_t * vecOut ,uint32_t longitud, u
 { for(uint16_t i=0; i<longitud; i++)
    {
 	  *(vecOut+i)=*(vecIn +i)*escalar;
-	  vectorPrueba[i]= *(vecOut+i);
+
    }
 }
 
