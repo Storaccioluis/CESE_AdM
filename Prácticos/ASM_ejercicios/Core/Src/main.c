@@ -169,11 +169,19 @@ int main(void)
   uint32_t vectorOut[10];
   uint32_t escalar=2;
 
+  uint16_t vectorIn_16[10]={0,1,2,3,4,5,6,7,8,9};
+  uint16_t vectorOut_16[10];
+  uint16_t escalar_16=3;
+
+  uint16_t vectorIn_12[10]={1,1,5000,3,4,5,6,7,8,9};
+  uint16_t vectorOut_12[10];
+  uint16_t escalar_12=1;
   const uint32_t Resultado = asm_sum (5, 3);
 
   asm_zeros(&vector,tam);
   asm_productoEscalar32(&vectorIn,&vectorOut,10,escalar);
-
+  asm_productoEscalar16(&vectorIn_16,&vectorOut_16,10,escalar_16);
+  asm_productoEscalar12(&vectorIn_12,&vectorOut_12,10,escalar_12);
   char buffer[50];
   sprintf(buffer,"Resultado :%d\n",Resultado);
   vPrintString(buffer);
