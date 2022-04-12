@@ -124,12 +124,14 @@
 @
 .thumb_func
     asm_productoEscalar16:
+         push { r10 }
      .asm_productoEscalar16_for:
-         ldr r10,[r0],2
+         ldrh r10,[r0],2
          MUL r4,r10,r3
-         str r4,[r1],2
+         strh r4,[r1],2
          subs r2,1
          bne .asm_productoEscalar16_for
+         pop { r10 }
          bx lr       @ vuelve adonde fue llamada (especificamente, si "pc"
                     @ es la direccion, en el codigo del programa, de la
                     @ instruccion "bl asm_sum" usada para saltar a
@@ -156,17 +158,19 @@
 @
 .thumb_func
     asm_productoEscalar12:
+         push { r5, r9-r10 }
          mov r5,#4095
      .asm_productoEscalar12_for:
-         ldr r10,[r0],2
-         MUL r4,r10,r3
-         cmp r4,r5
+         ldrh r10,[r0],2
+         MUL r9,r10,r3
+         cmp r9,r5
          blt .asm_productoEscalar12_menor
-         mov r4,#4095
+         mov r9,#4095
           .asm_productoEscalar12_menor:
-         str r4,[r1],2
+         strh r9,[r1],2
          subs r2,1
          bne .asm_productoEscalar12_for
+         pop { r5, r9-r10 }
          bx lr       @ vuelve adonde fue llamada (especificamente, si "pc"
                     @ es la direccion, en el codigo del programa, de la
                     @ instruccion "bl asm_sum" usada para saltar a
