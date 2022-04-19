@@ -53,7 +53,31 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
   Hardfault: es una interrupción que proviene del hardware, la misma tiene mayor prioridad que cualquier excepción con prioridad configurable. 
 
 
-10.
+10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
 
 
+#######################_ISA_##############################
+1. ISA (Instruction Set Arquitecture) en cortex-M es llamado Thumb ISA y es basado en Thumb-2 que soporta instrucciones de 16 y 32 bits.
+
+2. El sufijo 's se utiliza para que una instrucción active o no los flags de estado.
+
+   Por ejemplo:   subs r2,1                 @ realiza la resta del valor del registro r2-1
+                  bne .asm_pack32to16_for   @ realiza un branch en caso de que la resta anterior no sea igual a cero por la activación del flag Z
+
+3. La utilidad de la implementación de las instrucciones de aritmética saturada es conservar el valor de saturación en caso de desbordamiento. De esta forma se puede saber si la operación con Nbits resultó desbordada o no. Se utiliza comunmente en procesamiento de señales. Ejemplo:
+
+  	SSAT <Rd>, #<immed>, <Rn>, {,<shift>} @ Saturation for signed value
+	USAT <Rd>, #<immed>, <Rn>, {,<shift>} @ Saturation for a signed
+        
+        move r0,1       @
+        add r0,256      @         
+        USAT R1, #8, R0 @   R1= 0x00FF
+
+4.Un ensamblador toma un código generado en lenguaje C y lo traduce en asm para almacenarlo en la memoria mediante un linker script.
+Las funciones en assembler reciben los argumentos en los registros r0-r4 y devuelve los resultados en los mismos registros. Los demás registros de propósito general utilizados en el código deben guardarse en la pila previo a su utilización mediante la isntrucción push { rx---rz }. Al finalizar las instrucciones de la función, previo al salto al programa, se debe reestablecer los valores de los registros mediante pop { rx---rz }.
+
+5. SIMD(Single Instruction, Multiple Data) es una instrucción que realiza multiples datos. Se aplica en los casos en donde se quiera realizar una misma operación en registros de 32 bits con datos de 16 u 8 bits en una sola instrucción.
+Por ejemplo sumar datos de a pares de 8 bits.
+           ADD8 r0,r1    @ suma 4 pares de 8 bits de datos.
+           ADD16 r0,r1   @ suma 2 pares de 16 bits de datos.
 
