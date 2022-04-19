@@ -67,9 +67,11 @@ Al producirse un reset, la primera acción es obtener el valor inicial del MSP, 
 14. CMSIS (The Common Microcontroller Software Interface Standard) es una  interfáz estandar de software para microcontroladores. Es una capa de abstracción idependiente del proveedor para microcontroladores con procesadores ARM cortex. Define interfaces de herramientas genéricas y permite un consistente soporte del dispositivo. CMSIS simplifica la reutilización del soft.
 
 15.
+16.
 
 17. El systick es un timer externo al core que genera una interrupción en forma periódica. Independientemente del fabricante del microcontrolador, ARM provee además del core, el Systick como bloque de temporización para la utilización del mismo en los SO. Esto permite la portabilidad de los SO para las diferentes familias que posean el systick.
 
+18.La Unidad de protección de memoria (MPU) es una unidad programable que permite que el software privilegiado, generalmente un kernel de sistema operativo, defina el permiso de acceso a la memoria. Supervisa las transacciones, incluidas las búsquedas de instrucciones y los accesos a datos del procesador, lo que puede desencadenar una excepción de falla cuando se detecta una violación de acceso.
 
 
 #######################_ISA_##############################
