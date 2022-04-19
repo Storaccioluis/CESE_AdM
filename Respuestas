@@ -53,7 +53,16 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
   Hardfault: es una interrupción que proviene del hardware, la misma tiene mayor prioridad que cualquier excepción con prioridad configurable. 
 
 
-10. Describa las funciones principales de la pila. ¿Cómo resuelve la arquitectura el llamado a funciones y su retorno?
+10. La funcion principal de la pila es almacenar en memoria los valores de los registros para salvaguardarlos y poder ejecutar una funcion sin perder dichos valores. Al llamar a una función, la arquitectura guarda los valores del Stack Ponter (SP), link Register(LR), program counter (PC) y Program status register. La funciones reciben en los registros r0-r4 los parámetros de la misma y devuelve en r0-r1 el resultado.
+
+11.Secuencia reset del microprocesador
+    Existen tres tipos de reset: 
+					* Power on reset: se resetea todo el microcontrolador, incluye procesador, componentes de soporte del debug y periféricos.
+				 	* System reset: resetea solo el procesador y los periféricos.
+					* Processor reset: resetea solo el procesador.
+
+13. Las prioridades de las interrupciones están definidas por el número de interrupción CMSIS, en donde la máxima prioridad es el número más bajo. El fabricante define desde 0-239 IRQs seteables.
+
 
 
 #######################_ISA_##############################
@@ -74,7 +83,7 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
         USAT R1, #8, R0 @   R1= 0x00FF
 
 4.Un ensamblador toma un código generado en lenguaje C y lo traduce en asm para almacenarlo en la memoria mediante un linker script.
-Las funciones en assembler reciben los argumentos en los registros r0-r4 y devuelve los resultados en los mismos registros. Los demás registros de propósito general utilizados en el código deben guardarse en la pila previo a su utilización mediante la isntrucción push { rx---rz }. Al finalizar las instrucciones de la función, previo al salto al programa, se debe reestablecer los valores de los registros mediante pop { rx---rz }.
+Las funciones en assembler reciben los argumentos en los registros r0-r4 y devuelve los resultados en los registros r0 y r1. Los demás registros de propósito general utilizados en el código deben guardarse en la pila previo a su utilización mediante la isntrucción push { rx---rz }. Al finalizar las instrucciones de la función, previo al salto al programa, se debe reestablecer los valores de los registros mediante pop { rx---rz }.
 
 5. SIMD(Single Instruction, Multiple Data) es una instrucción que realiza multiples datos. Se aplica en los casos en donde se quiera realizar una misma operación en registros de 32 bits con datos de 16 u 8 bits en una sola instrucción.
 Por ejemplo sumar datos de a pares de 8 bits.
