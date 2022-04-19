@@ -68,6 +68,9 @@ Al producirse un reset, la primera acción es obtener el valor inicial del MSP, 
 
 15.
 
+17. El systick es un timer externo al core que genera una interrupción en forma periódica. Independientemente del fabricante del microcontrolador, ARM provee además del core, el Systick como bloque de temporización para la utilización del mismo en los SO. Esto permite la portabilidad de los SO para las diferentes familias que posean el systick.
+
+
 
 #######################_ISA_##############################
 1. ISA (Instruction Set Arquitecture) en cortex-M es llamado Thumb ISA y es basado en Thumb-2 que soporta instrucciones de 16 y 32 bits.
