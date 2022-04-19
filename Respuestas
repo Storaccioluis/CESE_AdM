@@ -35,7 +35,13 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
 7.Registros ortogonales
  Un set de instrucciones son ortogonales si las mismas pueden tomar cualquier registro del microcontrolador. Por ejemplo, ADD Rd, Rn, Rm.
 
-8.#####################################################
+8. Las instrucciones de ejecución condicional (it) solo se ejecutan según el valor de los flags de estado N, Z, C y V. Ejemplo: 
+	ittte lt
+		movne r0,#0          @ then
+		addne r0, r1         @ then
+		andne r0, r2         @ then
+		moveq r0,#0xFF       @ else
+
 
 9.Excepciones más prioritarias
   Estas excepciones tienen prioridades fijas, siendo la mas prioritaria la de menor valor. Por ejemplo reset =-3, NMI=-2 y Hardfault=-1.
@@ -47,7 +53,7 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
   Hardfault: es una interrupción que proviene del hardware, la misma tiene mayor prioridad que cualquier excepción con prioridad configurable. 
 
 
-
+10.
 
 
 
