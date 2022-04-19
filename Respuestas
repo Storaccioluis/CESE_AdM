@@ -60,9 +60,13 @@ Con la función  "__set_CONTROL(x)" podemos pasar al modo no privilegiado hacien
 					* Power on reset: se resetea todo el microcontrolador, incluye procesador, componentes de soporte del debug y periféricos.
 				 	* System reset: resetea solo el procesador y los periféricos.
 					* Processor reset: resetea solo el procesador.
+Al producirse un reset, la primera acción es obtener el valor inicial del MSP, luego los valores del vector de reset y la primera instruccion indicada en el vector del reset.
 
 13. Las prioridades de las interrupciones están definidas por el número de interrupción CMSIS, en donde la máxima prioridad es el número más bajo. El fabricante define desde 0-239 IRQs seteables.
 
+14. CMSIS (The Common Microcontroller Software Interface Standard) es una  interfáz estandar de software para microcontroladores. Es una capa de abstracción idependiente del proveedor para microcontroladores con procesadores ARM cortex. Define interfaces de herramientas genéricas y permite un consistente soporte del dispositivo. CMSIS simplifica la reutilización del soft.
+
+15.
 
 
 #######################_ISA_##############################
